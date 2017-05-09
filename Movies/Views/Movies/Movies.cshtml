@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*Comments here*@
+
+
+
+<h2 class="popular">Movies  </h2>
+
+
+    <ul>
+        <ul>
+            
+            @foreach (var movie in Model)
+            {
+                <li>
+                    <a href="#">movie</a>
+                </li>
+            }
+
+        </ul>
+
+    </ul>
+
