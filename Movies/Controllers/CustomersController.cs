@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
+using Movies.ViewModels;
 
 namespace Movies.Controllers
 {
@@ -42,14 +43,63 @@ namespace Movies.Controllers
            return View(customer);
         }
 
-        /*private IEnumerable<Customer> GetCustomers()
+        public ActionResult Edit(int id)
         {
-            return new List<Customer>
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if(customer == null)
             {
-                new Customer { Id = 1, Name = "Pedro Tavares" },
-                new Customer { Id = 2, Name = "John Williams" }
+                return HttpNotFound();
+            }
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipType.ToList()
             };
+            return View("CustomerForm", viewModel);
         }
-         * */
+
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipType.ToList();
+
+
+            //A new Class was create so that we can pass different objects as parameters
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+
+            return View("CustomerForm", viewModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+
+            if(customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+
+
+
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthday = customer.Birthday;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+
+            }
+            
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Customers");
+        }
+        
     }
 }

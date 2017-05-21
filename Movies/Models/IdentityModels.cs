@@ -23,6 +23,11 @@ namespace Movies.Models
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
+
+        public DbSet<MembershipType> MembershipType { get; set; }
+
+        public DbSet<MoviesGenre> Genres { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
