@@ -218,12 +218,37 @@
     <Compile Include="Migrations\201705211242396_AddGenreToidentityModels.Designer.cs">
       <DependentUpon>201705211242396_AddGenreToidentityModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705211859513_updateCode.cs" />
+    <Compile Include="Migrations\201705211859513_updateCode.Designer.cs">
+      <DependentUpon>201705211859513_updateCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705211905036_AddContrainsInTheClasses2.cs" />
+    <Compile Include="Migrations\201705211905036_AddContrainsInTheClasses2.Designer.cs">
+      <DependentUpon>201705211905036_AddContrainsInTheClasses2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705251943002_AddMin18YearsOldClassValidation.cs" />
+    <Compile Include="Migrations\201705251943002_AddMin18YearsOldClassValidation.Designer.cs">
+      <DependentUpon>201705251943002_AddMin18YearsOldClassValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705252145430_changeMovies.cs" />
+    <Compile Include="Migrations\201705252145430_changeMovies.Designer.cs">
+      <DependentUpon>201705252145430_changeMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705281009136_AddMoviesValidation1.cs" />
+    <Compile Include="Migrations\201705281009136_AddMoviesValidation1.Designer.cs">
+      <DependentUpon>201705281009136_AddMoviesValidation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705281023113_AddMoviesValidation2.cs" />
+    <Compile Include="Migrations\201705281023113_AddMoviesValidation2.Designer.cs">
+      <DependentUpon>201705281023113_AddMoviesValidation2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MoviesGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -351,6 +376,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705211242396_AddGenreToidentityModels.resx">
       <DependentUpon>201705211242396_AddGenreToidentityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705211859513_updateCode.resx">
+      <DependentUpon>201705211859513_updateCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705211905036_AddContrainsInTheClasses2.resx">
+      <DependentUpon>201705211905036_AddContrainsInTheClasses2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705251943002_AddMin18YearsOldClassValidation.resx">
+      <DependentUpon>201705251943002_AddMin18YearsOldClassValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705252145430_changeMovies.resx">
+      <DependentUpon>201705252145430_changeMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705281009136_AddMoviesValidation1.resx">
+      <DependentUpon>201705281009136_AddMoviesValidation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705281023113_AddMoviesValidation2.resx">
+      <DependentUpon>201705281023113_AddMoviesValidation2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

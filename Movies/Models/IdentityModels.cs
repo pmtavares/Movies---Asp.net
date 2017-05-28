@@ -26,7 +26,7 @@ namespace Movies.Models
 
         public DbSet<MembershipType> MembershipType { get; set; }
 
-        public DbSet<MoviesGenre> Genres { get; set; }
+        public DbSet<MoviesGenre> MoviesGenre { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

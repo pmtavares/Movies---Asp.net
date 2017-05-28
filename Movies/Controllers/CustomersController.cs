@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Movies.ViewModels;
+using System.Net;
 
 namespace Movies.Controllers
 {
@@ -68,6 +69,7 @@ namespace Movies.Controllers
             //A new Class was create so that we can pass different objects as parameters
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = membershipTypes
             };
 
@@ -75,10 +77,24 @@ namespace Movies.Controllers
         }
 
 
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if(!ModelState.IsValid) //Validation
+            {
 
+                
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipType.ToList()
+                };
+               
+                return View("CustomerForm", viewModel);
+            }
+            
             if(customer.Id == 0)
             {
                 _context.Customers.Add(customer);
@@ -86,9 +102,7 @@ namespace Movies.Controllers
             else
             {
                 var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
-
-
-
+                
                 customerInDb.Name = customer.Name;
                 customerInDb.Birthday = customer.Birthday;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
@@ -100,6 +114,8 @@ namespace Movies.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
+
+       
         
     }
 }
