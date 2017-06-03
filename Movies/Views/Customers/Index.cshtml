@@ -12,11 +12,12 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" id="customers">
         <thead>
             <tr>
                 <th>Customer</th>
                 <th>Discount rate</th>
+                <th>Delete</th>
             </tr>
 
         </thead>
@@ -29,9 +30,47 @@ else
 
                     <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id=customer.Id}, null)</td>
                     <td>@customer.MembershipType.TypeOfMembership </td>
+                    <td>
+                        <button data-customer-id="@customer.Id" class="btn-link js-delete">Delete</button>
+                         
+                    </td>
                 </tr>
             } 
 
         </tbody>
     </table>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#customers").DataTable(); //This is for add the datatable
+            $("#customers").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                /*
+                * This library was import using the package manager
+                * The bootbox is used for modal dialog box
+                */
+                bootbox.confirm("Are you sure you want to delete?", function (result) {
+                    if(result)
+                    {
+                        $.ajax({
+                            url: "/api/customers/" + button.attr("data-customer-id"),  //$(this).attr("data-customer-id")
+                            method: "DELETE",
+                            success: function () {
+
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }
+
+                });
+                
+            });
+        });
+
+    </script>
 }
