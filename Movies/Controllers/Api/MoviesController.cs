@@ -2,6 +2,7 @@
 using Movies.Dtos;
 using Movies.Models;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -25,7 +26,7 @@ namespace Movies.Controllers.Api
         //Get /Api/movies
         public IEnumerable<MovieDto> GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            return _context.Movies.Include(m => m.MovieGenre).ToList().Select(Mapper.Map<Movie, MovieDto>);
         }
 
 

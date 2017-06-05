@@ -20,6 +20,8 @@ namespace Movies.Dtos
         public DateTime? Birthday { get; set; }
         public bool IsSubscribedToNewsletter { get; set; }
 
+        public MembershipTypeDto MembershipType {get; set;}
+
         public byte MembershipTypeId { get; set; }
     }
 }

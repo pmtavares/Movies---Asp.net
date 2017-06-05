@@ -26,7 +26,9 @@ namespace Movies.Dtos
         //public DateTime? DataAdd { get; set; }
 
         [Display(Name = "Genre")]
-         
+
+        public MoviesGenreDto MovieGenre { get; set; }
+
         [Required]
         public byte MovieGenreId { get; set; }
     }
