@@ -23,6 +23,9 @@ namespace Movies.Models
         [Range(1, 20, ErrorMessage="The number must be between 1 and 20")]
         public int NumberInStock { get; set; }
 
+
+        public int NumberAvailable { get; set; }
+
         public DateTime? DataAdd { get; set; }
 
         [Display(Name = "Genre")]

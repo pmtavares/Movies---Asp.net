@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Movies.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+    <table class="table table-bordered table-hover" id="customers">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Discount rate</th>
+                
+            </tr>
+
+        </thead>
+
+        <tbody>
+            
+          
+        </tbody>
+    </table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //This is for add the datatable. The functions inside it will acces the customers api and retrieve the data
+            var table = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, customer) {
+                            return "<a href='/customers/edit/" + customer.id + "'>" + customer.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "membershipType.typeOfMembership"
+                    }
+
+                ]
+
+            });
+
+
+
+
+         
+        });
+
+    </script>
+}

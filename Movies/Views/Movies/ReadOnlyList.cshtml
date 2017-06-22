@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Movies.Models.Movie>
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+
+<table class="table table-bordered table-hover" id="movies">
+
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Genre</th>
+          
+        </tr>
+
+    </thead>
+    <tbody>
+        
+
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            //This is for add the datatable. The functions inside it will acces the customers api and retrieve the data
+            var table = $("#movies").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        
+                    },
+                    {
+                        data: "movieGenre.genre"
+                    }
+
+
+                ]
+
+            });
+
+
+
+        });
+
+
+    </script>
+}

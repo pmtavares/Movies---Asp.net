@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Movies.ViewModels;
 using System.Net;
+using System.Runtime.Caching;
 
 namespace Movies.Controllers
 {
@@ -30,9 +31,25 @@ namespace Movies.Controllers
         public ViewResult Index()
         {
 
+
+            //caching example
+            if (MemoryCache.Default["MoviesGenre"] == null)
+            {
+                MemoryCache.Default["MoviesGenre"] = _context.MembershipType.ToList();
+            }
+            var genres = MemoryCache.Default["MoviesGenre"] as IEnumerable<MoviesGenre>;
+
             //var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
-            return View(); //customers
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View();
+            }
+
+            return View("ReadOnlyList");
+
+
+            
         }
 
         public ActionResult Details(int id)
